@@ -1,23 +1,19 @@
 import useState from 'react';
-import './App.css'
-import SignupForm from './components/Forms/Signup';
+import LoginSignup from './components/LoginSignupPage/LoginSignup';
 
 function App() {
   return (
-    <>
-      <div className="text-center">
-        <h1>SCHEDULE MASTER</h1>
-        <h2>TODO CALENDAR</h2>
+    <main className="py-20 h-screen bg-blue-50 flex justify-center items-center text-center">
+      <div className="bg-white p-10 rounded-lg shadow-lg max-w-lg w-full flex flex-col justify-center items-center">
+        <div className="pb-10">
+          <h1 className="font-bold text-3xl text-blue-600">SCHEDULE MASTER</h1>
+          <h2 className="font-bold text-2xl">TODO CALENDAR</h2>
+        </div>
+        <div>
+          <LoginSignup />
+        </div>
       </div>
-      <div className="button">
-        <button type="button">Log In</button>
-        <button type="button">Sign Up</button>
-      </div>
-      <div>
-        <SignupForm />
-        {/* <Log In /> */}
-      </div>
-    </>
+    </main>
   )
 }
 
