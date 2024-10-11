@@ -2,18 +2,20 @@ import React, { useState } from 'react'
 
 
 // Prop to switch to login form
+// Define the props interface that includes the onToggleLogin function
 interface ResetPasswordProps {
-  onToggleLogin: () => void;
+  onToggleLogin?: () => void;
 }
 
 const ResetPassword: React.FC<ResetPasswordProps> = ({ onToggleLogin }) => {
+  console.log('Received onToggleLogin:', onToggleLogin);
   const [email, setEmail] = useState('');
   const [message, setMessage] = useState('');
   const [error, setError] = useState('');
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-
+    onToggleLogin();
     // Simple validation for email format
     if (!/\S+@\S+\.\S+/.test(email)) {
       setError('Please enter a valid email address');
@@ -22,12 +24,14 @@ const ResetPassword: React.FC<ResetPasswordProps> = ({ onToggleLogin }) => {
 
   setError('');
   setMessage('A reset link has been sent to your email!');
+  setEmail(''); // Reset form
+  // Example of triggering the toggle back to login after reset
+  // Just for demonstration, switching to login on form submit
+  onToggleLogin();
 
     // You would typically handle the email submission here
     // Example: send an API request to your backend to trigger the password reset email
     // fetch('/api/reset-password', { method: 'POST', body: JSON.stringify({ email }) });
-    
-    setEmail(''); // Reset form
   }
 
   return (
@@ -66,12 +70,9 @@ const ResetPassword: React.FC<ResetPasswordProps> = ({ onToggleLogin }) => {
       {/* Back to Login Button */}
       <button
         className="w-full py-2 px-4 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 transition duration-200"
-        onClick={() => {
-          console.log('Back to Login clicked');
-          onToggleLogin();
-        }} // Trigger back to Login
+        onClick={onToggleLogin} // Trigger back to Login
       >
-        Back to Login
+        Go back to Login
       </button>
     </div>
   )

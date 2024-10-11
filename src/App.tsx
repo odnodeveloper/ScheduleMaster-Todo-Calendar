@@ -1,7 +1,7 @@
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import LoginSignup from './components/LoginSignupPage/LoginSignup';
 import ResetPassword from './components/LoginSignupPage/ResetPassword';
-
+import Dashboard from './components/Dashboard/Dashboard';
 
 function App() {
   return (
@@ -16,9 +16,20 @@ function App() {
             {/* Router handles navigation */}
             <Routes>
               {/* Route to render/display LoginSignup form */}
-              <Route path="/" element={<LoginSignup />} />
+              <Route 
+                path="/" 
+                element={<LoginSignup />} 
+              />
               {/* Route ro render ResetPassword form */}
-              <Route path="/reset-password" element={<ResetPassword />} />
+              <Route 
+                path="/reset-password" 
+                element={<ResetPassword />} 
+              />
+              {/* Route to render Dashboard component */}
+              <Route 
+                path="/dashboard" 
+                element={<Dashboard />} 
+              />
             </Routes>
           </div>
         </div>

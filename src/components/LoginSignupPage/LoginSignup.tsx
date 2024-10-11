@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
-import SignupForm from './SignupForm'
-import LoginForm from './LoginForm'
-import ResetPassword from './ResetPassword'
+import SignupForm from './SignupForm';
+import LoginForm from './LoginForm';
+import ResetPassword from './ResetPassword';
 
 const LoginSignup: React.FC = () => {
     // State to track which form is active: login, signup or reset password
@@ -11,6 +11,7 @@ const LoginSignup: React.FC = () => {
     const handleToggleLogin = () => {
         console.log('Switching to login form');
         setActiveForm('login');
+        console.log('activeForm:',activeForm)
     }
 
     // Log whenever activeForm changes to ensure state is updating correctly
@@ -52,10 +53,7 @@ const LoginSignup: React.FC = () => {
                     <SignupForm onToggleLogin={() => setActiveForm('login')} />
                 )}
                 {activeForm === 'resetPassword' && (
-                    <>
-                        {console.log('Passing handleToggleLogin to ResetPassword:', handleToggleLogin)}
-                        <ResetPassword onToggleLogin={handleToggleLogin} />   
-                    </>
+                    <ResetPassword onToggleLogin={handleToggleLogin} />   
                 )}             
             </div>
         </div>
@@ -63,9 +61,3 @@ const LoginSignup: React.FC = () => {
 }
 
 export default LoginSignup;
-
-
-
-    
-         
-
