@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
 
@@ -12,6 +12,7 @@ const LoginForm: React.FC<LoginFormProps> = ({ onForgotPassword }) => {
   const [password, setPassword] = useState('');
   const [error, setError] = useState<string | null>(null);
   const [loggedIn, setLoggedIn] = useState(false);
+  const [passwordVisible, setPasswordVisible] = useState(false);
   const navigate = useNavigate();
 
   const handleLogin = (e: React.FormEvent) => {
@@ -30,19 +31,16 @@ const LoginForm: React.FC<LoginFormProps> = ({ onForgotPassword }) => {
     if (email === savedEmail && password === savedPassword) {
       setLoggedIn(true);
       setError(null);
+       // Navigate to the Dashboard only if login is successful
+      navigate('/dashboard');
     } else {
       setError('Invalid email or password');
     }
   }
 
-  const [passwordVisible, setPasswordVisible] = useState(false);
-
   const togglePasswordVisibility = () => {
     setPasswordVisible(!passwordVisible); // Toggle visibility
   }
-
-  // On successful login, navigate to the Dashboard
-  navigate('/dashboard');
 
   return (
     <div className="w-full max-w-sm mx-auto">
