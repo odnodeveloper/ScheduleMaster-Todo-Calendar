@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { useNavigate } from 'react-router-dom';
 
 
 // Prop to switch to login form
@@ -9,6 +10,7 @@ interface ResetPasswordProps {
 
 const ResetPassword: React.FC<ResetPasswordProps> = ({ onToggleLogin }) => {
   console.log('Received onToggleLogin:', onToggleLogin);
+  const navigate = useNavigate();
   const [email, setEmail] = useState('');
   const [message, setMessage] = useState('');
   const [error, setError] = useState('');
@@ -27,7 +29,7 @@ const ResetPassword: React.FC<ResetPasswordProps> = ({ onToggleLogin }) => {
   setEmail(''); // Reset form
   // Example of triggering the toggle back to login after reset
   // Just for demonstration, switching to login on form submit
-  onToggleLogin();
+  // onToggleLogin();
 
     // You would typically handle the email submission here
     // Example: send an API request to your backend to trigger the password reset email

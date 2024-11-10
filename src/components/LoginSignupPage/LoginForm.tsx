@@ -95,13 +95,13 @@ const LoginForm: React.FC<LoginFormProps> = ({ onForgotPassword }) => {
         {/* Forgot Password Link */}
         <div className="py-3 text-center">
           <span>Forgot password?</span>
-          <a 
-            href="/reset-password"
+          <button 
+            type="button"
             className="mx-2 text-blue-600 hover:underline" 
             onClick={onForgotPassword} // Trigger reset password form
           >
              Click Here!
-          </a>
+          </button>
         </div>
       </form> 
     </div>
